@@ -1,0 +1,670 @@
+{
+  "type": "JsonObject",
+  "require": true,
+  "detail": {
+    "train_config": {
+      "ROOT": {
+        "type": "String",
+        "require": true,
+        "description": "root dir to yolov5",
+        "default": "yolov5"
+      },
+      "weights": {
+        "type": "String",
+        "require": false,
+        "description": "path to yolov5 weights",
+        "default": "yolov5s.pt"
+      },
+      "cfg": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 config",
+        "default": "models/yolov5m.yaml"
+      },
+      "data": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 data config",
+        "default": "Pepsi.v1-pepsi.yolov5pytorch/data.yaml"
+      },
+      "hyp": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 hyperparameters config",
+        "default": "data/hyps/hyp.scratch.yaml"
+      },
+      "epochs": {
+        "type": "Integer",
+        "require": true,
+        "description": "number of epoch to train",
+        "default": 5
+      },
+      "batch-size": {
+        "type": "Integer",
+        "require": true,
+        "description": "number of batch size to train",
+        "default": 16
+      },
+      "imgsz": {
+        "type": "List",
+        "require": true,
+        "description": "size of image to train",
+        "default": 640
+      },
+      "rect": {
+        "type": "Boolean",
+        "require": true,
+        "description": "rectangular training",
+        "default": false
+      },
+      "resume": {
+        "type": "Boolean",
+        "require": true,
+        "description": "resume most recent training",
+        "default": false
+      },
+      "nosave": {
+        "type": "Boolean",
+        "require": true,
+        "description": "only save final checkpoint",
+        "default": false
+      },
+      "noval": {
+        "type": "Boolean",
+        "require": true,
+        "description": "only validate final epoch",
+        "default": false
+      },
+      "noautoanchor": {
+        "type": "Boolean",
+        "require": true,
+        "description": "disable AutoAnchor",
+        "default": false
+      },
+      "evolve": {
+        "type": "Integer",
+        "require": true,
+        "description": "evolve hyperparameters for x generations",
+        "default": 0
+      },
+      "bucket": {
+        "type": "String",
+        "require": true,
+        "description": "gsutil bucket",
+        "default": ""
+      },
+      "cache": {
+        "type": "String",
+        "require": true,
+        "description": "root dir to yolov5",
+        "default": "yolov5"
+      },
+      "image-weights": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use weighted image selection for training",
+        "default": false
+      },
+      "device": {
+        "type": "String",
+        "require": true,
+        "description": "cuda device, i.e. 0 or 0,1,2,3 or cpu",
+        "default": "0"
+      },
+      "multi-scale": {
+        "type": "Boolean",
+        "require": true,
+        "description": "vary img-size +/- 50%%",
+        "default": false
+      },
+      "single-cls": {
+        "type": "Boolean",
+        "require": true,
+        "description": "train multi-class data as single-class",
+        "default": false
+      },
+      "optimizer": {
+        "type": "String",
+        "require": true,
+        "description": "optimizer, choice ['SGD', 'Adam', 'AdamW']",
+        "default": "SGD"
+      },
+      "sync-bn": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use SyncBatchNorm, only available in DDP mode",
+        "default": false
+      },
+      "workers": {
+        "type": "Integer",
+        "require": true,
+        "description": "max dataloader workers (per RANK in DDP mode)",
+        "default": 0
+      },
+      "project": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "runs/train"
+      },
+      "name": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "exp"
+      },
+      "exist-ok": {
+        "type": "Boolean",
+        "require": true,
+        "description": "existing project/name ok, do not increment",
+        "default": false
+      },
+      "quad": {
+        "type": "Boolean",
+        "require": true,
+        "description": "quad dataloader",
+        "default": false
+      },
+      "linear-lr": {
+        "type": "Boolean",
+        "require": true,
+        "description": "linear LR",
+        "default": false
+      },
+      "label-smoothing": {
+        "type": "Float",
+        "require": true,
+        "description": "Label smoothing epsilon",
+        "default": 0.0
+      },
+      "patience": {
+        "type": "Integer",
+        "require": true,
+        "description": "EarlyStopping patience (epochs without improvement)",
+        "default": 100
+      },
+      "freeze": {
+        "type": "List",
+        "require": true,
+        "description": "Freeze layers: backbone=10, first3=0 1 2",
+        "default": [
+          0
+        ]
+      },
+      "save-period": {
+        "type": "Integer",
+        "require": true,
+        "description": "Save checkpoint every x epochs (disabled if < 1)",
+        "default": -1
+      },
+      "local_rank": {
+        "type": "Integer",
+        "require": true,
+        "description": "DDP parameter, do not modify",
+        "default": -1
+      },
+      "entity": {
+        "type": "String",
+        "require": true,
+        "description": "W&B: Entity",
+        "default": null
+      },
+      "upload_dataset": {
+        "type": "Boolean",
+        "require": true,
+        "description": "W&B: Upload data, \"val\" option",
+        "default": false
+      },
+      "bbox_interval": {
+        "type": "Integer",
+        "require": true,
+        "description": "W&B: Set bounding-box image logging interval",
+        "default": -1
+      },
+      "artifact_alias": {
+        "type": "String",
+        "require": true,
+        "description": "W&B: Version of dataset artifact to use",
+        "default": "lastest"
+      }
+    },
+    "detect_config": {
+      "ROOT": {
+        "type": "String",
+        "require": true,
+        "description": "root dir to yolov5",
+        "default": "yolov5"
+      },
+      "weights": {
+        "type": "String",
+        "require": false,
+        "description": "path to yolov5 weights",
+        "default": "/home/datdt/Desktop/Code/github/yolov5/yolov5s.pt"
+      },
+      "source": {
+        "type": "String",
+        "require": true,
+        "description": "file/dir/URL/glob, 0 for webcam",
+        "default": "data/images/zidane.jpg"
+      },
+      "data": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 data config",
+        "default": "data/coco128.yaml"
+      },
+      "imgsz": {
+        "type": "List",
+        "require": true,
+        "description": "size of image to train",
+        "default": [640, 640]
+      },
+      "conf-thres": {
+        "type": "Float",
+        "require": true,
+        "description": "confidence threshold",
+        "default": 0.25
+      },
+      "iou-thres": {
+        "type": "Float",
+        "require": true,
+        "description": "iou threshold",
+        "default": 0.45
+      },
+      "max-det": {
+        "type": "Integer",
+        "require": true,
+        "description": "maximum detections per image",
+        "default": 1000
+      },
+      "device": {
+        "type": "String",
+        "require": true,
+        "description": "cuda device, i.e. 0 or 0,1,2,3 or cpu",
+        "default": "0"
+      },
+      "view-img": {
+        "type": "Boolean",
+        "require": true,
+        "description": "show results",
+        "default": false
+      },
+      "save-txt": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save results to *.txt",
+        "default": false
+      },
+      "save-conf": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save confidences in --save-txt labels",
+        "default": false
+      },
+      "save-crop": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save cropped prediction boxes",
+        "default": false
+      },
+      "nosave": {
+        "type": "Boolean",
+        "require": true,
+        "description": "do not save images/videos",
+        "default": true
+      },
+      "classes": {
+        "type": "List",
+        "require": true,
+        "description": "filter by class: --classes 0, or --classes 0 2 3",
+        "default": []
+      },
+      "agnostic-nms": {
+        "type": "Boolean",
+        "require": true,
+        "description": "class-agnostic NMS",
+        "default": false
+      },
+      "augment": {
+        "type": "Boolean",
+        "require": true,
+        "description": "augmented inference",
+        "default": false
+      },
+      "visualize": {
+        "type": "Boolean",
+        "require": true,
+        "description": "visualize features",
+        "default": false
+      },
+      "update": {
+        "type": "Boolean",
+        "require": true,
+        "description": "update all models",
+        "default": false
+      },
+      "project": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "runs/detect"
+      },
+      "name": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "exp"
+      },
+      "exist-ok": {
+        "type": "Boolean",
+        "require": true,
+        "description": "existing project/name ok, do not increment",
+        "default": false
+      },
+      "line-thickness": {
+        "type": "Integer",
+        "require": true,
+        "description": "bounding box thickness (pixels)",
+        "default": 3
+      },
+      "hide-labels": {
+        "type": "Boolean",
+        "require": true,
+        "description": "hide labels",
+        "default": false
+      },
+      "hide-conf": {
+        "type": "Boolean",
+        "require": true,
+        "description": "hide confidences",
+        "default": false
+      },
+      "half": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use FP16 half-precision inference",
+        "default": false
+      },
+      "dnn": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use OpenCV DNN for ONNX inference",
+        "default": false
+      }
+    },
+    "val_config": {
+      "ROOT": {
+        "type": "String",
+        "require": true,
+        "description": "root dir to yolov5",
+        "default": "yolov5"
+      },
+      "weights": {
+        "type": "String",
+        "require": false,
+        "description": "path to yolov5 weights",
+        "default": "/home/datdt/Desktop/Code/github/yolov5/runs/train/exp/weights/best.pt"
+      },
+      "data": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 data config",
+        "default": "Pepsi.v1-pepsi.yolov5pytorch/data.yaml"
+      },
+      "imgsz": {
+        "type": "List",
+        "require": true,
+        "description": "size of image to train",
+        "default": 640
+      },
+      "conf-thres": {
+        "type": "Float",
+        "require": true,
+        "description": "confidence threshold",
+        "default": 0.25
+      },
+      "iou-thres": {
+        "type": "Float",
+        "require": true,
+        "description": "iou threshold",
+        "default": 0.45
+      },
+      "batch-size": {
+        "type": "Integer",
+        "require": true,
+        "description": "batch-size",
+        "default": 16
+      },
+      "device": {
+        "type": "String",
+        "require": true,
+        "description": "cuda device, i.e. 0 or 0,1,2,3 or cpu",
+        "default": "0"
+      },
+      "task": {
+        "type": "String",
+        "require": true,
+        "description": "train, val, test, speed or study",
+        "default": "val"
+      },
+      "save-txt": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save results to *.txt",
+        "default": false
+      },
+      "save-conf": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save confidences in --save-txt labels",
+        "default": false
+      },
+      "save-hybrid": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save label+prediction hybrid results to *.txt",
+        "default": false
+      },
+      "workers": {
+        "type": "Integer",
+        "require": true,
+        "description": "max dataloader workers (per RANK in DDP mode)",
+        "default": 0
+      },
+      "single-cls": {
+        "type": "Boolean",
+        "require": true,
+        "description": "treat as single-class dataset",
+        "default": false
+      },
+      "augment": {
+        "type": "Boolean",
+        "require": true,
+        "description": "augmented inference",
+        "default": false
+      },
+      "verbose": {
+        "type": "Boolean",
+        "require": true,
+        "description": "augmented inference",
+        "default": false
+      },
+      "save-json": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save a COCO-JSON results file",
+        "default": false
+      },
+      "project": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "runs/val"
+      },
+      "name": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "exp"
+      },
+      "exist-ok": {
+        "type": "Boolean",
+        "require": true,
+        "description": "existing project/name ok, do not increment",
+        "default": false
+      },
+      "half": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use FP16 half-precision inference",
+        "default": false
+      },
+      "dnn": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use OpenCV DNN for ONNX inference",
+        "default": false
+      }
+    },
+    "compare_config": {
+      "ROOT": {
+        "type": "String",
+        "require": true,
+        "description": "root dir to yolov5",
+        "default": "yolov5"
+      },
+      "weights_compare": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 weights",
+        "default": "./runs/train/exp/weights/best.pt"
+      },
+      "weights_best_model": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 weights",
+        "default": "./best.pt"
+      },
+      "data": {
+        "type": "String",
+        "require": true,
+        "description": "path to yolov5 data config",
+        "default": "Pepsi.v1-pepsi.yolov5pytorch/data.yaml"
+      },
+      "imgsz": {
+        "type": "List",
+        "require": true,
+        "description": "size of image to train",
+        "default": 640
+      },
+      "conf-thres": {
+        "type": "Float",
+        "require": true,
+        "description": "confidence threshold",
+        "default": 0.25
+      },
+      "iou-thres": {
+        "type": "Float",
+        "require": true,
+        "description": "iou threshold",
+        "default": 0.45
+      },
+      "batch-size": {
+        "type": "Integer",
+        "require": true,
+        "description": "batch-size",
+        "default": 16
+      },
+      "device": {
+        "type": "String",
+        "require": true,
+        "description": "cuda device, i.e. 0 or 0,1,2,3 or cpu",
+        "default": "0"
+      },
+      "task": {
+        "type": "String",
+        "require": true,
+        "description": "train, val, test, speed or study",
+        "default": "val"
+      },
+      "save-txt": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save results to *.txt",
+        "default": false
+      },
+      "save-conf": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save confidences in --save-txt labels",
+        "default": false
+      },
+      "save-hybrid": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save label+prediction hybrid results to *.txt",
+        "default": false
+      },
+      "workers": {
+        "type": "Integer",
+        "require": true,
+        "description": "max dataloader workers (per RANK in DDP mode)",
+        "default": 0
+      },
+      "single-cls": {
+        "type": "Boolean",
+        "require": true,
+        "description": "treat as single-class dataset",
+        "default": false
+      },
+      "augment": {
+        "type": "Boolean",
+        "require": true,
+        "description": "augmented inference",
+        "default": false
+      },
+      "verbose": {
+        "type": "Boolean",
+        "require": true,
+        "description": "augmented inference",
+        "default": false
+      },
+      "save-json": {
+        "type": "Boolean",
+        "require": true,
+        "description": "save a COCO-JSON results file",
+        "default": false
+      },
+      "project": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "runs/val"
+      },
+      "name": {
+        "type": "String",
+        "require": true,
+        "description": "save to project/name",
+        "default": "exp"
+      },
+      "exist-ok": {
+        "type": "Boolean",
+        "require": true,
+        "description": "existing project/name ok, do not increment",
+        "default": false
+      },
+      "half": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use FP16 half-precision inference",
+        "default": false
+      },
+      "dnn": {
+        "type": "Boolean",
+        "require": true,
+        "description": "use OpenCV DNN for ONNX inference",
+        "default": false
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+names:
+- face
+- hand
+- leg
+nc: 3
+train: ''
+val: ''

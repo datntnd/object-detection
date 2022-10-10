@@ -1,0 +1,24 @@
+# Base ----------------------------------------
+matplotlib>=3.2.2
+numpy>=1.18.5
+opencv-python>=4.1.2
+Pillow>=7.1.2
+PyYAML>=5.3.1
+requests>=2.23.0
+scipy>=1.4.1
+torchvision==0.11.1
+tqdm>=4.41.0
+minio
+tensorboard>=2.4.1
+mlflow==1.23.0
+# Plotting ------------------------------------
+pandas>=1.1.4
+albumentations
+onnx
+gsutil  
+wandb>=0.12.9
+pydantic
+seaborn
+protobuf==3.20.0
+configargparse
+bentoml==1.0.5

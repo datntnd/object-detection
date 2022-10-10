@@ -1,0 +1,6 @@
+names:
+- ['16']
+nc: 1
+test: data/4/testing/images
+train: data/4/training/images
+val: data/4/validation/images
