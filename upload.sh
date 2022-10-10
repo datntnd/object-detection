@@ -54,7 +54,7 @@ logfile="grafana_upload.log"
 DASHBOARD=$1
 
 # Pull through jq to validate json
-payload="$(jq . ${DASHBOARD}) >> $logfile"
+payload="$(/home/anaconda3/bin/jq . ${DASHBOARD}) >> $logfile"
 
 # Upload the JSON to Grafana
 curl -X POST \
