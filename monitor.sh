@@ -13,6 +13,4 @@ serving_port=${serving_port:-6000}
 # export serving_host=10.255.187.46
 # export serving_port=6000 
 # export kong_address=10.255.187.48:8001
-unset HTTPS_PROXY HTTP_PROXY http_proxy https_proxy
-
-python upload_kong.py
+/home/anaconda3/bin/python3 upload_kong.py

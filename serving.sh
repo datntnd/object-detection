@@ -4,7 +4,7 @@ serving_host=${serving_host:-10.61.185.119}
 serving_port=${serving_port:-6000}
 
 # Gen dashboard 
-python gen-dashboard/gen_dashboard.py --instance $serving_host:$serving_port
+/home/anaconda3/bin/python3 gen-dashboard/gen_dashboard.py --instance $serving_host:$serving_port
 
 # bash upload.sh  data.json
 
