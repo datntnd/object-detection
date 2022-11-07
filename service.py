@@ -3,6 +3,15 @@ import torch
 import bentoml
 from bentoml.io import Image
 from bentoml.io import PandasDataFrame
+from core.config import get_app_settings
+
+settings = get_app_settings()
+user_id = settings.user_id
+project_id = settings.project_id
+
+print("Serving bentoml.py")
+print(f"user_id: {user_id}")
+print(f"project_id: {project_id}")
 
 
 class Yolov5Runnable(bentoml.Runnable):
@@ -45,7 +54,7 @@ class Yolov5Runnable(bentoml.Runnable):
 
 yolo_v5_runner = bentoml.Runner(Yolov5Runnable, max_batch_size=30)
 
-svc = bentoml.Service("yolo_v5_demo", runners=[yolo_v5_runner])
+svc = bentoml.Service(f"object_detection_{user_id}_project_id_{project_id}", runners=[yolo_v5_runner])
 
 
 @svc.api(input=Image(), output=PandasDataFrame())

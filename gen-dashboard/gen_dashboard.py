@@ -3,6 +3,16 @@ import json
 import sys, os
 sys.path.append(os.path.abspath('.'))
 import configargparse
+from core.config import get_app_settings
+import os
+
+settings = get_app_settings()
+user_id = settings.user_id
+project_id = settings.project_id
+
+print("gen dashboard")
+print(f"user_id: {user_id}")
+print(f"project_id: {project_id}")
 
 
 def gen_dashboard_json(data):
@@ -31,10 +41,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(f"args: {args}")
 
-    title = " ".join("yolo_v5_demo".split("_")) + "_" + args.instance
+    title = f"object_detection_{user_id}_project_id_{project_id}_{args.instance}" 
 
     data = dict(
-        name="yolo_v5_demo",
+        name=f"object_detection_{user_id}_project_id_{project_id}",
         instance=args.instance,
         endpoint="/invocation",
         title=title,
