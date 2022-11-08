@@ -14,8 +14,7 @@ classes = []
 
 def get_data_from_minio_storage(user_id, project_id, dataset_version_id):
     data_bucket_name = settings.data_bucket_name
-    dataset_types = minio_client.list_objects(
-        data_bucket_name, prefix=f"{user_id}/{project_id}/labels/{dataset_version_id}/")
+    dataset_types = minio_client.list_objects(data_bucket_name, prefix=f"{user_id}/{project_id}/labels/{dataset_version_id}/")
     images = minio_client.list_objects(data_bucket_name, f"{user_id}/{project_id}/images/")
     image_dict = {}
 
