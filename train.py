@@ -505,7 +505,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
         "pipeline_id": settings.pipeline_id,
         "project_id": settings.project_id,
         "description": ""
-    }, headers={"user_id": user_id})
+    }, headers={"token": user_id})
     mlflow.log_params(output["model_result"])
     torch.cuda.empty_cache()
     return results
