@@ -1,3 +1,6 @@
+import json
+
+import requests
 from minio import Minio
 from core.config import get_app_settings
 import yaml
@@ -84,10 +87,7 @@ if __name__ == "__main__":
         response = requests.post("http://10.255.187.48:8089/api/v1/pipeline/create-pipeline",
                                  json={
                                      "project_id": int(settings.project_id),
-                                 }, headers={"token": settings.user_id}, proxies={
-                                     "http_proxy": "http://10.61.11.42:3128",
-                                     "https_proxy": "http://10.61.11.42:3128"
-                                 })
+                                 }, headers={"token": settings.user_id})
         print(response.text)
         response = json.loads(response.text).get("data")
         dataset_version_id = response.get("dataset_version_id")

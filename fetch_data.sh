@@ -16,7 +16,7 @@ echo "pipeline_id: $pipeline_id";
 
 export USER_ID=$user_id
 export PIPELINE_ID=$pipeline_id
-export DATASET_VERSION_ID=$dataset_id
+export dataset_id=$dataset_id
 export PROJECT_ID=$project_id
 unset HTTPS_PROXY HTTP_PROXY http_proxy https_proxy
 
