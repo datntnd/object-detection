@@ -15,7 +15,7 @@ class DevAppSettings(AppSettings):
     pipeline_id: str = os.environ.get("pipeline_id") if os.environ.get("pipeline_id") else lines[0].strip()
     user_id: str = os.environ.get("user_id")
     project_id: str = os.environ.get("project_id")
-    dataset_version_id: str = os.environ.get("dataset_version_id") if os.environ.get("project_id") else lines[1].strip()
+    dataset_version_id: str = os.environ.get("dataset_id") if os.environ.get("dataset_id") else lines[1].strip()
     logging_level: int = logging.DEBUG
     f.close()
 
