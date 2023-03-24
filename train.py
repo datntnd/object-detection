@@ -497,7 +497,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
     with open('train.json', 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=4)
     minioClient.fput_object(pipeline_bucket, f"{settings.user_id}/{settings.project_id}/{settings.dataset_version_id}/{settings.pipeline_id}/train.json", "train.json")
-    requests.post("http://10.255.187.50:8089/api/v1/model/create",
+    requests.post("http://10.255.187.46:8089/api/v1/model/create",
     json={
         "model_name": model_name,
         "model_url": f"{user_id}/{project_id}/{dataset_version_id}/{pipeline_id}/best.pt",
